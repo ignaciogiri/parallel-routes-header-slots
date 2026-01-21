@@ -2,6 +2,7 @@
 
 import { use } from "react"
 import Link from "next/link"
+import type { Route } from "next"
 import { useTranslations } from "next-intl"
 import { SearchBox } from "@/components/search-box"
 
@@ -20,7 +21,7 @@ export default function HeaderCenterSlot({ params }: { params: Promise<{ slug?: 
       )
     case "editor":
       return (
-        <Link href="/" className="font-bold text-xl">
+        <Link href={"/" as Route} className="font-bold text-xl">
           Acme
         </Link>
       )

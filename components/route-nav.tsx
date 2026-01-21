@@ -1,37 +1,38 @@
 "use client"
 
 import Link from "next/link"
+import type { Route } from "next"
 import { usePathname } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { ArrowLeft, Search, Share, User, Globe } from "lucide-react"
 
-const routes = [
+const routes: Array<{ path: Route; left: React.ReactNode; center: React.ReactNode; right: React.ReactNode }> = [
   {
-    path: "/",
+    path: "/" as Route,
     left: <span className="font-bold text-xs">Acme</span>,
     center: <span className="flex items-center gap-1 text-xs"><Search className="h-3 w-3" /> Search</span>,
     right: <span className="flex items-center gap-1"><User className="h-3 w-3" /><Globe className="h-3 w-3" /></span>,
   },
   {
-    path: "/about",
+    path: "/about" as Route,
     left: <span className="flex items-center gap-1 text-xs"><ArrowLeft className="h-3 w-3" /> About</span>,
     center: <span className="text-[10px] bg-muted px-1.5 py-0.5 rounded">Badge</span>,
     right: <span className="flex items-center gap-1"><Share className="h-3 w-3" /><Globe className="h-3 w-3" /></span>,
   },
   {
-    path: "/editor",
+    path: "/editor" as Route,
     left: <ArrowLeft className="h-3 w-3" />,
     center: <span className="font-bold text-xs">Acme</span>,
     right: <span className="flex items-center gap-1"><User className="h-3 w-3" /><Globe className="h-3 w-3" /></span>,
   },
   {
-    path: "/settings",
+    path: "/settings" as Route,
     left: <span className="font-bold text-xs">Acme</span>,
     center: <span className="flex items-center gap-1 text-xs"><Search className="h-3 w-3" /> Search</span>,
     right: <span className="flex items-center gap-1"><User className="h-3 w-3" /><Globe className="h-3 w-3" /></span>,
   },
   {
-    path: "/profile",
+    path: "/profile" as Route,
     left: <span className="font-bold text-xs">Acme</span>,
     center: <span className="flex items-center gap-1 text-xs"><Search className="h-3 w-3" /> Search</span>,
     right: <span className="flex items-center gap-1"><User className="h-3 w-3" /><Globe className="h-3 w-3" /></span>,

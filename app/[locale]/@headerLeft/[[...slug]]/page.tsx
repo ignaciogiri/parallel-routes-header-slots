@@ -2,6 +2,7 @@
 
 import { use } from "react"
 import Link from "next/link"
+import type { Route } from "next"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { ArrowLeft } from "lucide-react"
@@ -30,7 +31,7 @@ export default function HeaderLeftSlot({ params }: { params: Promise<{ slug?: st
       )
     default:
       return (
-        <Link href="/" className="font-bold text-xl">
+        <Link href={"/" as Route} className="font-bold text-xl">
           Acme
         </Link>
       )
