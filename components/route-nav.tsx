@@ -1,10 +1,9 @@
 "use client"
 
-import Link from "next/link"
 import type { Route } from "next"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
-import { ArrowLeft, Search, Share, User, Globe } from "lucide-react"
+import { ArrowLeft, Search, Share, User, Globe, TriangleAlert } from "lucide-react"
 
 const routes: Array<{ path: Route; left: React.ReactNode; center: React.ReactNode; right: React.ReactNode }> = [
   {
@@ -41,9 +40,17 @@ const routes: Array<{ path: Route; left: React.ReactNode; center: React.ReactNod
 
 export function RouteNav() {
   const pathname = usePathname()
+  const router = useRouter()
   const t = useTranslations("demo")
   // Remove locale prefix for comparison
   const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "") || "/"
+
+  const handleNavigation = (path: Route) => {
+    router.push(path, {
+      // @ts-expect-error - experimental option for catch-all routes
+      forceOptimisticNavigation: true,
+    })
+  }
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center p-4">
@@ -61,10 +68,10 @@ export function RouteNav() {
             <span className="flex-1 text-center">{t("expectedHeader")}</span>
           </div>
           {routes.map(({ path, left, center, right }) => (
-            <Link
+            <button
               key={path}
-              href={path}
-              className={`flex items-center gap-4 p-3 border-b last:border-b-0 hover:bg-muted/50 ${
+              onClick={() => handleNavigation(path)}
+              className={`w-full flex items-center gap-4 p-3 border-b last:border-b-0 hover:bg-muted/50 text-left ${
                 pathWithoutLocale === path ? "bg-muted" : ""
               }`}
             >
@@ -74,20 +81,21 @@ export function RouteNav() {
                 {center}
                 {right}
               </div>
-            </Link>
+            </button>
           ))}
         </div>
 
-        <div className="p-4 rounded-lg bg-amber-500/10 border border-amber-500/30 text-sm space-y-2">
-          <p className="font-semibold text-amber-700">⚠️ {t("problem.title")}</p>
-          <p className="text-muted-foreground">
-            {t.rich("problem.description", {
-              home: (chunks) => <code className="bg-muted px-1 rounded">{chunks}</code>,
-              settings: (chunks) => <code className="bg-muted px-1 rounded">{chunks}</code>,
-              profile: (chunks) => <code className="bg-muted px-1 rounded">{chunks}</code>,
-              handler: (chunks) => <code className="bg-muted px-1 rounded">{chunks}</code>,
-            })}
+        <div className="p-4 rounded-lg bg-muted/50 border text-sm space-y-2">
+          <p className="font-medium flex items-center gap-2">
+            <TriangleAlert className="h-4 w-4" />
+            {t("problem.title")}
           </p>
+          <p className="text-muted-foreground">{t("problem.description")}</p>
+          <p className="text-muted-foreground"><strong>{t.rich("withoutCache.title", { code: (c) => <code className="bg-muted px-1 rounded text-xs">{c}</code> })}:</strong> {t.rich("withoutCache.description", { code: (c) => <code className="bg-muted px-1 rounded text-xs">{c}</code> })}</p>
+          <p className="text-muted-foreground"><strong>{t.rich("withCache.title", { code: (c) => <code className="bg-muted px-1 rounded text-xs">{c}</code> })}:</strong> {t.rich("withCache.description", { code: (c) => <code className="bg-muted px-1 rounded text-xs">{c}</code> })}</p>
+          <p className="text-muted-foreground"><strong>{t.rich("homeException.title", { code: (c) => <code className="bg-muted px-1 rounded text-xs">{c}</code> })}:</strong> {t.rich("homeException.description", { code: (c) => <code className="bg-muted px-1 rounded text-xs">{c}</code> })}</p>
+          <p className="text-muted-foreground"><strong>{t.rich("expected.title", { code: (c) => <code className="bg-muted px-1 rounded text-xs">{c}</code> })}:</strong> {t.rich("expected.description", { code: (c) => <code className="bg-muted px-1 rounded text-xs">{c}</code> })}</p>
+          <p className="text-xs text-muted-foreground pt-2 border-t">{t("mountIndicator")}</p>
         </div>
       </div>
     </div>

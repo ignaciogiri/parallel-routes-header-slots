@@ -1,1 +1,5 @@
-export { default } from "./[[...slug]]/page"
+import { SearchBox } from "@/components/search-box"
+
+export default function HeaderCenterDefault() {
+  return <SearchBox />
+}

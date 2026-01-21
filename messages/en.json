@@ -21,9 +21,26 @@
     "current": "Current",
     "route": "Route",
     "expectedHeader": "Expected header",
+    "mountIndicator": "The purple timer shows how long each slot has been mounted.",
     "problem": {
-      "title": "The problem",
-      "description": "Click between <home>/</home>, <settings>/settings</settings>, and <profile>/profile</profile>. They share the same <handler>[[...slug]]</handler> handler, yet the search box unmounts and remounts on each navigation (watch the animation restart)."
+      "title": "The Problem",
+      "description": "Navigate between routes and watch the header slots. The timer resets = component remounted."
+    },
+    "withoutCache": {
+      "title": "Without cacheComponents",
+      "description": "All parallel route slots remount on every navigation. Even <code>/settings</code> and <code>/profile</code> (same SearchBox component) cause remounts."
+    },
+    "withCache": {
+      "title": "With cacheComponents: true",
+      "description": "Components don't remount, BUT each route has isolated state. <code>/settings</code> and <code>/profile</code> have separate SearchBox instances — animation resets when switching between them."
+    },
+    "homeException": {
+      "title": "The <code>/</code> exception",
+      "description": "Uses <code>default.tsx</code> (no dynamic segment) — doesn't trigger remount behavior."
+    },
+    "expected": {
+      "title": "Expected Behavior",
+      "description": "When <code>/settings</code> and <code>/profile</code> both render SearchBox, React should keep it mounted (same component type). Only remount when switching to different content (e.g., <code>/about</code>)."
     }
   }
 }

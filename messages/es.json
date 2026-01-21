@@ -21,9 +21,26 @@
     "current": "Actual",
     "route": "Ruta",
     "expectedHeader": "Header esperado",
+    "mountIndicator": "El temporizador morado muestra cuánto tiempo lleva montado cada slot.",
     "problem": {
-      "title": "El problema",
-      "description": "Haz clic entre <home>/</home>, <settings>/settings</settings> y <profile>/profile</profile>. Comparten el mismo handler <handler>[[...slug]]</handler>, pero la caja de búsqueda se desmonta y remonta en cada navegación (observa la animación reiniciarse)."
+      "title": "El Problema",
+      "description": "Navega entre rutas y observa los slots del header. Timer se reinicia = componente remontado."
+    },
+    "withoutCache": {
+      "title": "Sin cacheComponents",
+      "description": "Todos los slots de rutas paralelas se remontan en cada navegación. Incluso <code>/settings</code> y <code>/profile</code> (mismo componente SearchBox) causan remontajes."
+    },
+    "withCache": {
+      "title": "Con cacheComponents: true",
+      "description": "Los componentes no se remontan, PERO cada ruta tiene estado aislado. <code>/settings</code> y <code>/profile</code> tienen instancias separadas de SearchBox — la animación se reinicia al cambiar entre ellas."
+    },
+    "homeException": {
+      "title": "La excepción de <code>/</code>",
+      "description": "Usa <code>default.tsx</code> (sin segmento dinámico) — no dispara el comportamiento de remontaje."
+    },
+    "expected": {
+      "title": "Comportamiento Esperado",
+      "description": "Cuando <code>/settings</code> y <code>/profile</code> ambos renderizan SearchBox, React debería mantenerlo montado (mismo tipo de componente). Solo remontar al cambiar a contenido diferente (ej. <code>/about</code>)."
     }
   }
 }

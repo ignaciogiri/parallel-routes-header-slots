@@ -21,9 +21,26 @@
     "current": "Aktuell",
     "route": "Route",
     "expectedHeader": "Erwarteter Header",
+    "mountIndicator": "Der lila Timer zeigt, wie lange jeder Slot gemountet ist.",
     "problem": {
       "title": "Das Problem",
-      "description": "Klicke zwischen <home>/</home>, <settings>/settings</settings> und <profile>/profile</profile>. Sie teilen denselben <handler>[[...slug]]</handler> Handler, aber die Suchbox wird bei jeder Navigation abgebaut und neu aufgebaut (beobachte den Neustart der Animation)."
+      "description": "Navigiere zwischen Routen und beobachte die Header-Slots. Timer zurückgesetzt = Komponente neu gemountet."
+    },
+    "withoutCache": {
+      "title": "Ohne cacheComponents",
+      "description": "Alle parallelen Routen-Slots werden bei jeder Navigation neu gemountet. Sogar <code>/settings</code> und <code>/profile</code> (gleiche SearchBox-Komponente) verursachen Remounts."
+    },
+    "withCache": {
+      "title": "Mit cacheComponents: true",
+      "description": "Komponenten werden nicht neu gemountet, ABER jede Route hat isolierten State. <code>/settings</code> und <code>/profile</code> haben separate SearchBox-Instanzen — Animation startet neu beim Wechseln."
+    },
+    "homeException": {
+      "title": "Die <code>/</code> Ausnahme",
+      "description": "Verwendet <code>default.tsx</code> (kein dynamisches Segment) — löst kein Remount-Verhalten aus."
+    },
+    "expected": {
+      "title": "Erwartetes Verhalten",
+      "description": "Wenn <code>/settings</code> und <code>/profile</code> beide SearchBox rendern, sollte React es gemountet lassen (gleicher Komponententyp). Nur remounten bei anderem Inhalt (z.B. <code>/about</code>)."
     }
   }
 }

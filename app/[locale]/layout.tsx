@@ -3,6 +3,8 @@ import { NextIntlClientProvider } from "next-intl"
 import { getMessages, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
+import { LocaleSwitcher } from "@/components/locale-switcher"
+import { MountIndicator } from "@/components/mount-indicator"
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -37,7 +39,7 @@ export default async function LocaleLayout({
       <body className="antialiased bg-background text-foreground">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <header className="border-b sticky top-0 bg-background z-50 px-4">
-            <div className="flex h-16 items-center justify-between max-w-5xl mx-auto">
+            <div className="flex h-16 items-center justify-between">
               <div className="flex items-center gap-4 min-w-[200px]">
                 <Suspense>{headerLeft}</Suspense>
               </div>
@@ -46,6 +48,10 @@ export default async function LocaleLayout({
               </div>
               <div className="flex items-center gap-4 min-w-[200px] justify-end">
                 <Suspense>{headerRight}</Suspense>
+                <div className="flex items-center gap-2 pl-4 border-l">
+                  <MountIndicator />
+                  <LocaleSwitcher />
+                </div>
               </div>
             </div>
           </header>
