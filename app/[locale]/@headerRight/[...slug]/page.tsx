@@ -13,6 +13,7 @@ export default function HeaderRightSlot() {
 
   switch (path) {
     case "about":
+    case "profile":
       return (
         <div className="flex items-center gap-2">
           <MountIndicator />
