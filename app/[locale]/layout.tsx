@@ -65,7 +65,7 @@ export default async function LocaleLayout({
             </div>
           </main>
           <a
-            href="https://github.com/igitur/parallel-routes-header-slots"
+            href="https://github.com/ignaciogiri/parallel-routes-header-slots"
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-4 right-4 flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-full shadow-lg hover:opacity-80 transition-opacity text-sm"
