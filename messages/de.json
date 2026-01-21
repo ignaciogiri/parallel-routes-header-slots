@@ -23,7 +23,7 @@
     "expectedHeader": "Erwarteter Header",
     "problem": {
       "title": "Das Problem",
-      "description": "Klicke zwischen {home}, {settings} und {profile}. Sie teilen denselben {handler} Handler, aber die Suchbox wird bei jeder Navigation abgebaut und neu aufgebaut (beobachte den Neustart der Animation)."
+      "description": "Klicke zwischen <home>/</home>, <settings>/settings</settings> und <profile>/profile</profile>. Sie teilen denselben <handler>[[...slug]]</handler> Handler, aber die Suchbox wird bei jeder Navigation abgebaut und neu aufgebaut (beobachte den Neustart der Animation)."
     }
   }
 }

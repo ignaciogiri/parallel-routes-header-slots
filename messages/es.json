@@ -23,7 +23,7 @@
     "expectedHeader": "Header esperado",
     "problem": {
       "title": "El problema",
-      "description": "Haz clic entre {home}, {settings} y {profile}. Comparten el mismo handler {handler}, pero la caja de búsqueda se desmonta y remonta en cada navegación (observa la animación reiniciarse)."
+      "description": "Haz clic entre <home>/</home>, <settings>/settings</settings> y <profile>/profile</profile>. Comparten el mismo handler <handler>[[...slug]]</handler>, pero la caja de búsqueda se desmonta y remonta en cada navegación (observa la animación reiniciarse)."
     }
   }
 }

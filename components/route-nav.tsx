@@ -81,10 +81,10 @@ export function RouteNav() {
           <p className="font-semibold text-amber-700">⚠️ {t("problem.title")}</p>
           <p className="text-muted-foreground">
             {t.rich("problem.description", {
-              home: () => <code className="bg-muted px-1 rounded">/</code>,
-              settings: () => <code className="bg-muted px-1 rounded">/settings</code>,
-              profile: () => <code className="bg-muted px-1 rounded">/profile</code>,
-              handler: () => <code className="bg-muted px-1 rounded">[[...slug]]</code>,
+              home: (chunks) => <code className="bg-muted px-1 rounded">{chunks}</code>,
+              settings: (chunks) => <code className="bg-muted px-1 rounded">{chunks}</code>,
+              profile: (chunks) => <code className="bg-muted px-1 rounded">{chunks}</code>,
+              handler: (chunks) => <code className="bg-muted px-1 rounded">{chunks}</code>,
             })}
           </p>
         </div>

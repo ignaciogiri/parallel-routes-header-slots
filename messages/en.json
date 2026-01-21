@@ -23,7 +23,7 @@
     "expectedHeader": "Expected header",
     "problem": {
       "title": "The problem",
-      "description": "Click between {home}, {settings}, and {profile}. They share the same {handler} handler, yet the search box unmounts and remounts on each navigation (watch the animation restart)."
+      "description": "Click between <home>/</home>, <settings>/settings</settings>, and <profile>/profile</profile>. They share the same <handler>[[...slug]]</handler> handler, yet the search box unmounts and remounts on each navigation (watch the animation restart)."
     }
   }
 }
